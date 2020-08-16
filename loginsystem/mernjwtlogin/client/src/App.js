@@ -14,6 +14,7 @@ import store from './store'
 import axios from 'axios'
 import {Provider} from 'react-redux'
 import { SET_CURRENT_USER, GET_ERROR } from './actions/types';
+import Dashboard from './components/Dashboard';
 if(localStorage.getItem('jwtToken')){
   const config = {
     headers:{
@@ -42,6 +43,7 @@ class App extends Component {
               <Route path="/" exact component={Home}/>
               <Route path="/register" exact component={Register}></Route>
               <Route path="/login" exact component={()=><Login ></Login>}></Route>
+              <Route path="/dashboard" exact component={Dashboard}></Route>
             </Switch>
           </div>
       </Router>

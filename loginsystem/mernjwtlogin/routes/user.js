@@ -5,9 +5,6 @@ const bcrypt = require('bcryptjs');
 const { response } = require('express');
 const config = require('config');
 const jwt = require('jsonwebtoken');
-router.get('/',(req,res)=>{
-    res.send('hello ji');
-})
 
 router.post('/register',(req,res)=>{
     const {name,email,password} = req.body;
@@ -15,15 +12,12 @@ router.post('/register',(req,res)=>{
         res.status(400).json({msg: 'information incomplete'})
         return;
     }
-
     User.findOne({email})
     .then(user => {
         if(user){
             res.status(400).json({msg:'Email already exist'});
             return;
         } else{
-
-
             const newUser = new User({
                 name:name,
                 email:email,
